@@ -1,0 +1,44 @@
+{% extends 'index.html' %} {% load static %} {% block title %}
+<title>Proce Blog | Perfil</title>
+{% endblock %} {% block header %}
+<header
+  class="masthead"
+  style="background-image: url({% static 'assets/img/register-bg.jpg' %})"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          <h1>¡TU PERFIL!</h1>
+          <span class="subheading">Visualiza y administra tu perfil</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %} {% block main %}
+<main>
+  <div style="display: flex; justify-content: center; margin-bottom: 10px">
+    <div style="display: flex; flex-direction: column; justify-content: center;">
+      <div style="display:flex; justify-content: center;">
+        {% if img %}
+        <img style="height: 150px; width: 150px" src="{{ img }}">
+        {% else %}
+        <img style="height: 150px; width: 150px" src="{% static 'assets/avatar/defaultAvatar.jpg' %}">
+        {% endif %}
+      </div>
+      <h2 style="text-align: center">{{ user.username }}</h2>
+      <div style="margin: 20px 0px">
+        <h3 style="font-weight: normal; text-align: center">Nombre: {{ user.first_name }}</h3>
+        <h3 style="font-weight: normal; text-align: center">Apellido: {{ user.last_name }}</h3>
+        <h3 style="font-weight: normal; text-align: center">E-mail: {{ user.email }}</h3>
+      </div>
+      <a
+        href="{% url 'editProfile' %}"
+        style="background: beige; cursor: pointer; border: 2px solid black; text-align: center"
+        >EDITAR PERFIL</a
+      >
+    </div>
+  </div>
+</main>
+{% endblock %}

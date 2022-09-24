@@ -1,0 +1,45 @@
+{% extends 'index.html' %} {% load static %} {% block title %}
+<title>Proce Blog | Editar perfil</title>
+{% endblock %} {% block header %}
+<header
+  class="masthead"
+  style="background-image: url({% static 'assets/img/register-bg.jpg' %})"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          <h1>¡TU PERFIL!</h1>
+          <span class="subheading">¡Únete a esta gran comunidad!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %} {% block main %}
+<main style="margin: 0px 0px 20px 0px">
+    <h2 style="font-weight: normal; margin-bottom: 20px; font-size: 15px; display: flex; justify-content: center">
+      *Su nombre de usuario ({{ user.username }}) no puede ser modificado, en
+      caso de necesitarlo, comuníquese mendiante la página de contacto con el cambio solicitado y un administrador se encargará de ello.
+    </h2>
+      <div style="display: flex; justify-content: center">
+        {% if img %}
+        <img style="height: 150px; width: 150px" src="{{ img }}" />
+        <a href="{% url 'addAvatar' %}" style="background: beige; cursor: pointer; border: 2px solid black; text-align: center; height: 25px; font-size: 15px; margin-top: 125px">CAMBIAR IMAGEN</a>
+        {% else %}
+        <img style="height: 150px; width: 150px" src="{% static 'assets/avatar/defaultAvatar.jpg' %}">
+        <a href="{% url 'addAvatar' %}" style="background: beige; cursor: pointer; border: 2px solid black; text-align: center; height: 25px; font-size: 15px; margin-top: 125px">CAMBIAR IMAGEN</a>
+        {% endif %}
+        
+      </div>
+    <div style="display: flex; justify-content: center;">
+    <form action="{% url 'editProfile' %}" method="POST">
+      {% csrf_token %}
+      <table style="margin: 20px 0px">
+        {{ form.as_table }}
+      </table>
+      <button style="background: beige; cursor: pointer; border: 2px solid black; text-align: center; width: 464px" type="submit">CONFIRMAR CAMBIOS</button>
+    </form>
+    </div>
+</main>
+{% endblock %}
