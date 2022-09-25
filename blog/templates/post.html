@@ -3,13 +3,13 @@
 {% endblock %} {% block header %}
 <header
   class="masthead"
-  style="background-image: url({% static 'assets/img/post-bg.jpg' %})"
+  style="background-image: url({% static 'assets/img/post-bg.jpeg' %})"
 >
   <div class="container position-relative px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="page-heading">
-          <h1>¡Comparte hoy con el mundo tu experiencia y gustos!</h1>
+          <h1>¡Comparte!</h1>
           <span class="subheading">Aquí puedes comenzar a postear</span>
         </div>
       </div>
@@ -17,15 +17,15 @@
   </div>
 </header>
 {% endblock %} {% block main %}
-<main>
-  <form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <table>
-      {{ imgForm.as_p }}
-      {{ form.media }}
-      {{ form.as_table }}
-    </table>
-    <button type="submit">CREAR!</button>
-  </form>
+<main style="display: flex; justify-content: center">
+  <div style="margin: 10px">
+    <form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table>
+        {{ imgForm.as_p }} {{ form.media }} {{ form.as_table }}
+      </table>
+      <button type="submit">CREAR!</button>
+    </form>
+  </div>
 </main>
 {% endblock %}

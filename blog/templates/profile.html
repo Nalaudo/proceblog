@@ -3,7 +3,7 @@
 {% endblock %} {% block header %}
 <header
   class="masthead"
-  style="background-image: url({% static 'assets/img/register-bg.jpg' %})"
+  style="background-image: url({% static 'assets/img/auth-bg.jpg' %})"
 >
   <div class="container position-relative px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -19,25 +19,104 @@
 {% endblock %} {% block main %}
 <main>
   <div style="display: flex; justify-content: center; margin-bottom: 10px">
-    <div style="display: flex; flex-direction: column; justify-content: center;">
-      <div style="display:flex; justify-content: center;">
+    <div style="display: flex; flex-direction: column; justify-content: center">
+      <div style="display: flex; justify-content: center">
         {% if img %}
-        <img style="height: 150px; width: 150px" src="{{ img }}">
+        <img style="height: 150px; width: 150px" src="{{ img }}" />
         {% else %}
-        <img style="height: 150px; width: 150px" src="{% static 'assets/avatar/defaultAvatar.jpg' %}">
+        <img
+          style="height: 150px; width: 150px"
+          src="{% static 'assets/avatar/defaultAvatar.jpg' %}"
+        />
         {% endif %}
       </div>
       <h2 style="text-align: center">{{ user.username }}</h2>
       <div style="margin: 20px 0px">
-        <h3 style="font-weight: normal; text-align: center">Nombre: {{ user.first_name }}</h3>
-        <h3 style="font-weight: normal; text-align: center">Apellido: {{ user.last_name }}</h3>
-        <h3 style="font-weight: normal; text-align: center">E-mail: {{ user.email }}</h3>
+        <h3 style="font-weight: normal; text-align: center">
+          Nombre: {{ user.first_name }}
+        </h3>
+        <h3 style="font-weight: normal; text-align: center">
+          Apellido: {{ user.last_name }}
+        </h3>
+        <h3 style="font-weight: normal; text-align: center">
+          E-mail: {{ user.email }}
+        </h3>
       </div>
       <a
         href="{% url 'editProfile' %}"
-        style="background: beige; cursor: pointer; border: 2px solid black; text-align: center"
+        style="
+          background: beige;
+          cursor: pointer;
+          border: 2px solid black;
+          text-align: center;
+        "
         >EDITAR PERFIL</a
       >
+      <h3
+        style="
+          font-weight: normal;
+          text-align: center;
+          margin: 50px 0px 30px 0px;
+        "
+      >
+        TUS POSTS
+      </h3>
+      {% for post in posts %}
+      <div style="display: flex; flex-direction: column, justify-content: left">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            border: 3px solid black;
+            margin: 0px 0px 10px 10px;
+          "
+        >
+          <a href="{% url 'postDetail' post.slug %}">
+            <div style="display: flex; flex-direction: row">
+              <div>
+                <h2>{{ post.title }}</h2>
+                <h3 style="font-weight: normal">{{ post.subtitle }}</h3>
+                <h4 style="font-weight: normal">
+                  {{ post.author }} | {{ post.created_on }}
+                </h4>
+              </div>
+              <div>
+                <img
+                  style="height: 125px; margin: 10px 10px 10px 50px"
+                  src="{{ post.img.url }}"
+                />
+              </div>
+            </div>
+          </a>
+          <div style="display: flex; flex-direction: row, justify-content: left; margin-bottom: 10px">
+          <a
+            style="
+              display: flex;
+              justify-content: center;
+              margin: auto 10px;
+              border: 2px solid black;
+              padding: 2px;
+              width: 150px;
+            "
+            href="{% url 'postUpdate' post.slug %}"
+            >Editar Post</a
+          >
+          <a
+            style="
+              display: flex;
+              justify-content: center;
+              margin: auto 10px;
+              border: 2px solid black;
+              padding: 2px;
+              width: 150px;
+            "
+            href="{% url 'postDelete' post.slug %}"
+            >Eliminar Post</a
+          >
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </main>

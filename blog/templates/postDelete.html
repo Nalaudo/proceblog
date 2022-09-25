@@ -1,16 +1,16 @@
 {% extends 'index.html' %} {% load static %} {% block title %}
-<title>Proce Blog | Registrarse</title>
+<title>Proce Blog | Postear</title>
 {% endblock %} {% block header %}
 <header
   class="masthead"
-  style="background-image: url({% static 'assets/img/auth-bg.jpg' %})"
+  style="background-image: url({% static 'assets/img/post-bg.jpg' %})"
 >
   <div class="container position-relative px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="page-heading">
-          <h1>¡Registrate!</h1>
-          <span class="subheading">¡Únete a esta gran comunidad!</span>
+          <h1>¡Comparte hoy con el mundo tu experiencia y gustos!</h1>
+          <span class="subheading">Aquí puedes comenzar a postear</span>
         </div>
       </div>
     </div>
@@ -18,12 +18,10 @@
 </header>
 {% endblock %} {% block main %}
 <main style="display: flex; justify-content: center">
-  <form style="display: flex; flex-direction: column; justify-content: center" action="{% url 'register' %}" method="POST">
+  <form style="display: flex; flex-direction: column; justify-content: center" method="post">
     {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-    </table>
-    <button style="margin: 20px 0px" type="submit" type="submit">UNIRSE!</button>
+    <p>Estás seguro que quieres eliminar el post "{{ object }}"?</p>
+    <button style="margin: 20px 0px" type="submit">ELIMINAR PERMANENTEMENTE</button>
   </form>
 </main>
 {% endblock %}

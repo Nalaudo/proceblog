@@ -17,14 +17,13 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
         help_texts = {k: "" for k in fields}
 
-
 class UserEditForm(UserCreationForm):
-    email = forms.EmailField(label='Modificar E-Mail')
+    email = forms.EmailField(label='Modificar e-mail')
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(
         label='Confirmar contraseña', widget=forms.PasswordInput)
-    first_name = forms.CharField(label='Modificar Nombre')
-    last_name = forms.CharField(label='Modificar Apellido')
+    first_name = forms.CharField(label='Modificar nombre')
+    last_name = forms.CharField(label='Modificar apellido')
 
     class Meta:
         model = User
@@ -50,3 +49,13 @@ class PostCreateForm(forms.ModelForm):
 
 class PostImgForm(forms.Form):
     img = forms.ImageField(label="Imagen")
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['user', 'message']
+        labels = {
+            "user": "Usuario",
+            "message": "Mensaje",
+        }

@@ -112,7 +112,7 @@
     {% block header %}
     <header
       class="masthead"
-      style="background-image: url({% static 'assets/img/home-bg.jpg' %})"
+      style="background-image: url({% static 'assets/img/home-bg.jpeg' %}); margin: 0px"
     >
       <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -130,30 +130,34 @@
     {% endblock %}
     <!-- Main Content-->
     {% block main %}
-    <main>
+    <main style="background-color: beige; padding-top: 20px">
       {% for post in post_list %}
       <div style="display: flex; flex-direction: column, justify-content: left">
         <div
           style="
             display: flex;
-            flex-direction: row;
-            border: 2px solid black;
-            margin-bottom: 10px;
+            flex-direction: column;
+            border: 3px solid black;
+            margin: 0px 0px 10px 10px;
           "
         >
-          <div>
-            <h2>{{ post.title }}</h2>
-            <h4 style="font-weight: normal">{{ post.subtitle }}</h4>
-            <h4 style="font-weight: normal">{{ post.author }} | {{ post.created_on }}</h4>
-          </div>
-          <div>
-            <img style="height: 100px" src="{{ post.img.url }}">
-          </div>
-          <a
-            style="display: flex; flex-direction: column, justify-content: left; margin: auto 10px; border: 2px solid black; padding: 2px;"
-            href="{% url 'postDetail' post.slug %}"
-            >Leer más</a
-          >
+          <a href="{% url 'postDetail' post.slug %}">
+            <div style="display: flex; flex-direction: row">
+              <div>
+                <h2>{{ post.title }}</h2>
+                <h3 style="font-weight: normal">{{ post.subtitle }}</h3>
+                <h4 style="font-weight: normal">
+                  {{ post.author }} | {{ post.created_on }}
+                </h4>
+              </div>
+              <div>
+                <img
+                  style="height: 125px; margin: 10px 10px 10px 50px"
+                  src="{{ post.img.url }}"
+                />
+              </div>
+            </div>
+          </a>
         </div>
       </div>
       {% empty %}

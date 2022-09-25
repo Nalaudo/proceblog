@@ -9,23 +9,21 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="page-heading">
-          <h1>¡Comparte hoy con el mundo tu experiencia y gustos!</h1>
-          <span class="subheading">Aquí puedes comenzar a postear</span>
+          <h1>¡Modifica tu post!</h1>
+          <span class="subheading">Aquí puedes modificar tu postear</span>
         </div>
       </div>
     </div>
   </div>
 </header>
 {% endblock %} {% block main %}
-<main>
-  <form action="{% url 'postUpdate' post.slug %}" method="POST" enctype="multipart/form-data">
+<main style="display: flex; justify-content: center">
+  <form style="display: flex; flex-direction: column; justify-content: center" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
-      {{ imgForm.as_p }}
-      {{ form.media }}
-      {{ form.as_table }}
+      {{ imgForm.as_p }} {{ form.media }} {{ form.as_table }}
     </table>
-    <button type="submit">MODIFICAR!</button>
+    <button style="margin: 20px 0px" type="submit">MODIFICAR!</button>
   </form>
 </main>
 {% endblock %}

@@ -1,28 +1,19 @@
 {% extends 'index.html' %} {% load static %} {% block title %}
 <title>Proce Blog | Detalle del post</title>
 {% endblock %} {% block header %}
-<header
-  class="masthead"
-  style="background-image: url({{ post.img.url }})"
-
-></header>
+<header style="background-color: black; height: 82px"></header>
 {% endblock %} {% block main %}
 <main style="display: flex; justify-content: center">
   <div class="col-md-8 card mb-4 mt-3 left top">
     <div class="card-body">
       <h1 class="text-muted">{{ post.title }}</h1>
+      <h2 class="text-muted">{{ post.subtitle }}</h2>
       <p class="text-muted">{{ post.author }} | {{ post.created_on }}</p>
-      <p
-        style="text-align: left; inline-size: 250px; overflow-wrap: 'break-word'; font-size; 20px'"
-        class="card-text"
-      >
-        {{ post.body|safe }}
-      </p>
-      <a
-      style="display: flex; flex-direction: column, justify-content: center; margin: auto 10px; border: 2px solid black; padding: 2px; width: 111px"
-      href="{% url 'postUpdate' post.slug %}"
-      >Editar Post</a
-    >
+      <img
+        style="max-height: 500px; min-height: 250px"
+        src="{{ post.img.url }}"
+      />
+      <p class="card-text">{{ post.body|safe }}</p>
     </div>
   </div>
 </main>
