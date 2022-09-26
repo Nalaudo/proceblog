@@ -10,13 +10,13 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def chat(request):
-    return render(request, 'chat.html', {'messages': getMessageInbox(request).order_by('-created_at')})
+    return render(request, 'chat.html', {'messages': getMessageInbox(request)})
 
 
 def getMessageInbox(request):
     messages = Message.objects.filter(reciever=request.user)
     if len(messages) != 0:
-        message = messages
+        message = messages.order_by('-created_at')
     else:
         message = 0
     return message
@@ -24,13 +24,13 @@ def getMessageInbox(request):
 
 @login_required
 def sent(request):
-    return render(request, 'sent.html', {'messages': getMessageSent(request).order_by('-created_at')})
+    return render(request, 'sent.html', {'messages': getMessageSent(request)})
 
 
 def getMessageSent(request):
     messages = Message.objects.filter(sender=request.user)
     if len(messages) != 0:
-        message = messages
+        message = messages.order_by('-created_at')
     else:
         message = 0
     return message

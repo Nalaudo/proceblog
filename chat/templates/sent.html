@@ -1,5 +1,5 @@
 {% extends 'index.html' %} {% load static %} {% block title %}
-<title>Proce Blog | Chat</title>
+<title>Proce Blog | Mensajes enviados</title>
 {% endblock %} {% block header %}
 <header
   class="masthead"
@@ -29,7 +29,7 @@
         margin: auto 10px;
         border: 2px solid black;
         padding: 2px;
-        width: 150px;
+        width: 160px;
       "
       href="{% url 'send' %}"
       >Enviar mensaje</a
@@ -41,7 +41,7 @@
         margin: auto 10px;
         border: 2px solid black;
         padding: 2px;
-        width: 200px;
+        width: 190px;
       "
       href="{% url 'chat' %}"
       >Mensajes recibidos</a

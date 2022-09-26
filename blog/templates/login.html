@@ -9,8 +9,13 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="page-heading">
+          {% if not request.user.is_authenticated %}
           <h1>¡Inicia sesión!</h1>
           <span class="subheading">¡Comienza a postear ahora!</span>
+          {% else %}
+          <h1>¡UPS!</h1>
+          <span class="subheading">¡No puedes hacer esto!</span>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -18,6 +23,7 @@
 </header>
 {% endblock %} {% block main %}
 <main style="display: flex; justify-content: center">
+  {% if not request.user.is_authenticated %}
   <form style="display: flex; flex-direction: column; justify-content: center" action="{% url 'login' %}" method="POST">
     {% csrf_token %} {% if message %} {{ message }} {% endif %}
     <table>
@@ -25,5 +31,8 @@
     </table>
     <button style="margin: 20px 0px" type="submit">INGRESAR</button>
   </form>
+  {% else %}
+  <h2>¡Ya estás logueado!</h2>
+  {% endif %}
 </main>
 {% endblock %}
