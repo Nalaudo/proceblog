@@ -8,6 +8,17 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic import *
 from django.urls import reverse_lazy
+from django.contrib.auth.models import Group
+
+
+def error_403(request, exception):
+    return render(request,'403.html')
+
+def error_404(request, exception):
+    return render(request,'404.html')
+
+def error_500(request, *args, **argv):
+    return render(request,'500.html')
 
 
 class PostList(ListView):
@@ -75,6 +86,8 @@ def register_user(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
+            group = Group.objects.get(name='User')
+            user.groups.add(group)
             login(request, user)
             return redirect('profile')
     else:
@@ -118,7 +131,7 @@ def getPosts(request):
     if len(posts) != 0:
         post = posts
     else:
-        post = "Aún no tienes posts"
+        post = 0
     return post
 
 
@@ -153,7 +166,7 @@ def addAvatar(request):
             return redirect('profile')
     else:
         form = AvatarForm()
-    return render(request, 'addAvatar.html', {'form': form, 'user': request.user, "img": getAvatar(request)})
+    return render(request, 'addAvatar.html', {'form': form})
 
 
 def getAvatar(request):
@@ -161,7 +174,7 @@ def getAvatar(request):
     if len(avatarList) != 0:
         img = avatarList[0].img.url
     else:
-        img = ""
+        img = 0
     return img
 
 
@@ -190,4 +203,4 @@ class ContactView(CreateView):
             contact = form.save(commit=False)
             contact.save()
             return redirect(reverse_lazy('contact'))
-        return render(request, 'contact.html', {'form': form, 'success': "Mensaje enviado"})
+        return render(request, 'contact.html', {'form': form})

@@ -21,4 +21,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
+    path('chat/', include('chat.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler403 = 'blog.views.error_403'
+handler404 = 'blog.views.error_404'
+handler500 = 'blog.views.error_500'

@@ -1,0 +1,77 @@
+{% extends 'index.html' %} {% load static %} {% block title %}
+<title>Proce Blog | Chat</title>
+{% endblock %} {% block header %}
+<header
+  class="masthead"
+  style="
+    background-image: url({% static 'assets/img/chat-bg.jpeg' %});
+    margin: 0px;
+  "
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          <h1>Chat</h1>
+          <span class="subheading">¡Conéctate con otras personas!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %} {% block main %}
+<main style="background-color: beige; padding: 10px 0px 20px 0px">
+  <div style="display: flex; flex-direction: row; justify-content: left; margin-bottom: 40px">
+    <a
+      style="
+        display: flex;
+        justify-content: center;
+        margin: auto 10px;
+        border: 2px solid black;
+        padding: 2px;
+        width: 150px;
+      "
+      href="{% url 'send' %}"
+      >Enviar mensaje</a
+    >
+    <a
+      style="
+        display: flex;
+        justify-content: center;
+        margin: auto 10px;
+        border: 2px solid black;
+        padding: 2px;
+        width: 200px;
+      "
+      href="{% url 'chat' %}"
+      >Mensajes recibidos</a
+    >
+  </div>
+  {% if messages != 0 %}
+  <h2 style="margin: 20px 10px">MENSAJES ENVIADOS</h2>
+  {% for message in messages %}
+  <div style="display: flex; justify-content: left">
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        border: 3px solid black;
+        margin: 0px 0px 10px 10px;
+      "
+    >
+      <div style="margin: 10px">
+        <div>
+          <h2>Para: {{ message.reciever }}</h2>
+          <h4 style="font-weight: normal">{{ message.msg_content|safe }}</h4>
+          <p style="font-weight: normal; margin: 0px">
+            {{ message.created_at }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %} {% else %}
+  <h2 style="margin: 20px 10px; padding: 10px">Aún no tienes mensajes enviados</h2>
+  {% endif %}
+</main>
+{% endblock %}

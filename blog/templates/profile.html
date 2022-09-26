@@ -10,7 +10,7 @@
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="page-heading">
           <h1>¡TU PERFIL!</h1>
-          <span class="subheading">Visualiza y administra tu perfil</span>
+          <span class="subheading">Visualiza y administra tu perfil.</span>
         </div>
       </div>
     </div>
@@ -49,9 +49,11 @@
           cursor: pointer;
           border: 2px solid black;
           text-align: center;
+          margin-bottom: 10px
         "
         >EDITAR PERFIL</a
       >
+      {% if posts != 0 %}
       <h3
         style="
           font-weight: normal;
@@ -117,6 +119,7 @@
         </div>
       </div>
       {% endfor %}
+      {% endif %}
     </div>
   </div>
 </main>

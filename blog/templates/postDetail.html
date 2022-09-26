@@ -11,7 +11,7 @@
       <p class="text-muted">{{ post.author }} | {{ post.created_on }}</p>
       <img
         style="max-height: 500px; min-height: 250px"
-        src="{{ post.img.url }}"
+        src="{{ post.img.url|safe }}"
       />
       <p class="card-text">{{ post.body|safe }}</p>
     </div>

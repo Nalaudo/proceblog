@@ -1,0 +1,58 @@
+{% extends 'index.html' %} {% load static %} {% block title %}
+<title>Proce Blog | Chat</title>
+{% endblock %} {% block header %}
+<header
+  class="masthead"
+  style="background-image: url({% static 'assets/img/chat-bg.jpeg' %});
+  margin: 0px;"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          <h1>Chat</h1>
+          <span class="subheading">¡Conéctate con otras personas!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %} {% block main %}
+<main style="display: flex; padding: 10px 0px 20px 0px; justify-content: center; background-color: beige">
+  <div style="margin: 10px">
+    <div style="display: flex; flex-direction: row; justify-content: left; margin-bottom: 50px">
+        <a
+          style="
+            display: flex;
+            justify-content: center;
+            margin: auto 10px;
+            border: 2px solid black;
+            padding: 2px;
+            width: 200px;
+          "
+          href="{% url 'chat' %}"
+          >Mensajes recibidos</a
+        >
+        <a
+          style="
+            display: flex;
+            justify-content: center;
+            margin: auto 10px;
+            border: 2px solid black;
+            padding: 2px;
+            width: 200px;
+          "
+          href="{% url 'sent' %}"
+          >Mensajes enviados</a
+        >
+      </div>
+    <form action="{% url 'send' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table>
+        {{ form.media }} {{ form.as_table }}
+      </table>
+      <button type="submit">ENVIAR</button>
+    </form>
+  </div>
+</main>
+{% endblock %}

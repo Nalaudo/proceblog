@@ -1,52 +1,39 @@
-{% extends 'index.html' %}
-{% load static %}
-
-{% block title %}
+{% extends 'index.html' %} {% load static %} {% block title %}
 <title>Proce Blog | Acerca de mí</title>
-{% endblock %}
-{% block header %}
+{% endblock %} {% block header %}
 <header
-    class="masthead"
-    style="background-image: url({% static 'assets/img/about-bg.jpeg' %})"
-  >
-    <div class="container position-relative px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-          <div class="page-heading">
-            <h1>Acerca de mí</h1>
-            <span class="subheading">Este soy yo.</span>
-            <span class="subheading">(el de la foto obvio)</span>
-          </div>
+  class="masthead"
+  style="background-image: url({% static 'assets/img/about-bg.jpeg' %})"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          <h1>Acerca de mí</h1>
+          <span class="subheading">Este soy yo.</span>
+          <span class="subheading">(el de la foto obvio)</span>
         </div>
       </div>
     </div>
+  </div>
 </header>
-{% endblock %}
-{% block main %}
+{% endblock %} {% block main %}
 <main class="mb-4">
-    <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe
-            nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis
-            sit soluta odio, adipisci quas excepturi maxime quae totam ducimus
-            consectetur?
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
-            praesentium recusandae illo eaque architecto error, repellendus
-            iusto reprehenderit, doloribus, minus sunt. Numquam at quae
-            voluptatum in officia voluptas voluptatibus, minus!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut
-            consequuntur magnam, excepturi aliquid ex itaque esse est vero natus
-            quae optio aperiam soluta voluptatibus corporis atque iste neque sit
-            tempora!
-          </p>
-        </div>
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <p>
+          Me llamo Nicolás Balaudo, tengo 18 años, soy Frontend developer, pero
+          actualmente continúo estudiando Banckend para ser FullStack Developer,
+          en mi caso MERN. Vivo en Santa Fe capital junto con mis padres, mi
+          hermana (quien también cursó conmigo el curso de Python) y mi perro que se
+          llama Polo.
+        </p>
+        <p>
+          Solo me queda decirte que disfrutes mi sitio.👍
+        </p>
       </div>
     </div>
-  </main>
+  </div>
+</main>
 {% endblock %}
