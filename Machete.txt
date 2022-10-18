@@ -1,0 +1,22 @@
+{%  %}
+
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block nombrebloque %}
+{% endblock %}
+
+{% static 'link/img' %}
+{% url 'inicio' %}
+
+{% if x %}
+{% endif %}
+
+{% for x in xx %}
+{% empty %}
+{% endfor %}
+
+{% if not request.user.is_authenticated %}
+{% else %}
+{% endif %}
